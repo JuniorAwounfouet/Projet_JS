@@ -20,7 +20,7 @@ jobs:
         run: npm install
       - name: Run backend 
         working-directory: ./Serveur
-        run: node App.mjs
+        run: node App.mjs &
       - name: Fix file permissions
         working-directory: ./Serveur
         run: chmod +x ./node_modules/.bin/vitest
