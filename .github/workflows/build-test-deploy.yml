@@ -18,6 +18,7 @@ jobs:
       - name: Install backend dependencies
         working-directory: ./Serveur
         run: npm install
+      - run: chmod +x ./Serveur/node_modules/vitest/vitest.mjs
       - name: Run backend tests
         working-directory: ./Serveur
         run: npm run test
@@ -34,6 +35,9 @@ jobs:
       - name: Install frontend dependencies
         working-directory: ./Client
         run: npm install
+      - name: Run frontend 
+        working-directory: ./Client
+        run: npm run dev
       - name: Run frontend tests
         working-directory: ./Client
         run: npm run cypress:run
