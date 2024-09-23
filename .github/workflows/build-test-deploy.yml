@@ -17,8 +17,10 @@ jobs:
           node-version: '20.17.0'
       - name: Install backend dependencies
         working-directory: ./Serveur
-        run: npm install
-      - run: chmod +x ./Serveur/node_modules/vitest/vitest.mjs
+        run: npm 
+      - name: Fix file permissions
+        working-directory: ./Serveur
+        run: chmod +x ./node_modules/.bin/vitest
       - name: Run backend tests
         working-directory: ./Serveur
         run: npm run test
@@ -37,7 +39,9 @@ jobs:
         run: npm install
       - name: Run frontend 
         working-directory: ./Client
-        run: npm run dev
+        run: npm run dev &
+      - name: Wait for frontend server to start
+        run: sleep 10
       - name: Run frontend tests
         working-directory: ./Client
         run: npm run cypress:run
