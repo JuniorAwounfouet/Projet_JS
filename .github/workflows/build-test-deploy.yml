@@ -17,7 +17,10 @@ jobs:
           node-version: '20.17.0'
       - name: Install backend dependencies
         working-directory: ./Serveur
-        run: npm 
+        run: npm install
+      - name: Run backend 
+        working-directory: ./Serveur
+        run: node App.mjs
       - name: Fix file permissions
         working-directory: ./Serveur
         run: chmod +x ./node_modules/.bin/vitest
