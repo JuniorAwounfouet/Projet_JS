@@ -18,9 +18,6 @@ jobs:
       - name: Install backend dependencies
         working-directory: ./Serveur
         run: npm install
-      - name: Run backend 
-        working-directory: ./Serveur
-        run: node App.mjs &
       - name: Fix file permissions
         working-directory: ./Serveur
         run: chmod +x ./node_modules/.bin/vitest
@@ -43,6 +40,9 @@ jobs:
       - name: Run frontend 
         working-directory: ./Client
         run: npm run dev &
+      - name: Run backend 
+        working-directory: ./Serveur
+        run: node App.mjs &
       - name: Wait for frontend server to start
         run: sleep 10
       - name: Run frontend tests
